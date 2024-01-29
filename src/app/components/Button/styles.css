@@ -1,0 +1,34 @@
+.unique {
+    all: unset;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    padding: 1rem 0;
+    gap: 0.5rem;
+
+    border-radius: 0.5rem;
+}
+
+.unique:hover {
+    cursor: pointer;
+
+    opacity: 0.9;
+}
+
+.unique:active {
+    opacity: 0.5;
+}
+
+.blue {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.02rem;
+
+    color: #FFF;
+    background: linear-gradient(90deg, #0796D3 0%, #53C0F0 68.65%);
+}

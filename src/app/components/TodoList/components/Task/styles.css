@@ -1,0 +1,83 @@
+.container-task {
+    display: flex;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    align-self: stretch;
+
+    min-width: 24rem;
+
+    border-radius: 0.5rem;
+    border: 1px dashed #D7DDE9;
+}
+
+.container-task>label {
+    width: 17.125rem;
+
+    color: #000;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.02rem;
+
+    cursor: pointer;
+}
+
+.container-task>.checked {
+    color: rgba(0, 0, 0, 0.54);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.02rem;
+    text-decoration: line-through;
+}
+
+.container-task>input[type='checkbox'] {
+    appearance: none;
+
+    display: grid;
+    place-content: center;
+
+    padding: 0.1875rem;
+    width: 1.5rem;
+    height: 1.5rem;
+
+    border-radius: 0.25rem;
+    border: 1.5px solid #D7DDE9;
+    background: #FFF;
+
+    cursor: pointer;
+}
+
+.container-task>input[type='checkbox']::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+
+    background-color: #0796D3;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+}
+
+.container-task>input[type='checkbox']:checked {
+    border: 1.5px solid #0796D3;
+    background-color: #A0DCF6;
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+.icon-delete-task:hover {
+    cursor: pointer;
+    scale: 1.1;
+}
+
+.icon-delete-task:active {
+    scale: 0.9;
+}
