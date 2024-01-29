@@ -11,10 +11,10 @@ export default function Header() {
                 <Image src={logomark} alt="Logomarca da FocalPoint" />
                 <Image src={logotype} alt="Logotipo da FocalPoint" />
             </div>
-            <h1>
+            <span className='header-text-center'>
                 Bem-vindo de volta, Marcus
-            </h1>
-            <span className='date-header'>
+            </span>
+            <span className='text-date-header'>
                 Segunda, 22 de dezembro de 2024
             </span>
         </header>

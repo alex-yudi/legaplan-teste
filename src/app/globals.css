@@ -4,7 +4,6 @@
   margin: 0;
 }
 
-main {
-  display: flex;
-  justify-content: center;
+body {
+  padding: 0 3.5rem;
 }
