@@ -2,13 +2,15 @@
 import './styles.css'
 import TrashIcon from '@/assets/trash.svg'
 import Image from 'next/image'
+import { ChangeEventHandler } from 'react'
 
 type Props = {
     value: string;
     checked?: boolean;
+    onChange: ChangeEventHandler<HTMLInputElement>;
 }
 
-export default function Task({ value, checked }: Props) {
+export default function Task({ value, checked, onChange }: Props) {
 
     const handleDeleteTask = () => {
         alert("task deletada")
@@ -19,6 +21,7 @@ export default function Task({ value, checked }: Props) {
             <input
                 type='checkbox'
                 id={value}
+                onChange={onChange}
                 checked={checked}
             />
             <label

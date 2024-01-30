@@ -1,11 +1,14 @@
 'use client'
-import React from "react"
+import React, { ChangeEventHandler } from "react"
 import Task from "./components/Task"
 import "./styles.css"
 import Button from "../Button"
 
 export default function TodoList() {
 
+    const handleOnChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+        console.log(e.target.checked)
+    }
     return (
         <div className="container-component-todo-list">
 
@@ -16,6 +19,7 @@ export default function TodoList() {
                 <div className="task-list">
                     <Task
                         value='teste'
+                        onChange={handleOnChange}
                     />
                 </div>
 
@@ -25,7 +29,7 @@ export default function TodoList() {
                 <div className="task-list tasks-dones">
                     <Task
                         value='teste2'
-                        checked
+                        onChange={handleOnChange}
                     />
                 </div>
             </div>
