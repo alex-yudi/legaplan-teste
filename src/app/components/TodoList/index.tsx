@@ -24,6 +24,9 @@ const mocTasks: task[] = [
 export default function TodoList() {
     const [listOfTasks, setListOfTasks] = useState<task[]>(mocTasks)
 
+    const listTasksOpened = listOfTasks.filter((task) => !task.checked)
+    const listTasksClosed = listOfTasks.filter((task) => task.checked)
+
     const handleOnChange: ChangeEventHandler<HTMLInputElement> = (e) => {
         console.log(e.target.checked)
     }
@@ -36,7 +39,7 @@ export default function TodoList() {
                 </span>
                 <div className="task-list">
                     {
-                        listOfTasks.map((task) => (
+                        listTasksOpened.map((task) => (
                             <Task
                                 key={task.title}
                                 value={task}
@@ -51,7 +54,7 @@ export default function TodoList() {
                 </span>
                 <div className="task-list tasks-dones">
                     {
-                        listOfTasks.map((task) => (
+                        listTasksClosed.map((task) => (
                             <Task
                                 key={task.title}
                                 value={task}
