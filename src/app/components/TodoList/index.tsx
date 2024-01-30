@@ -4,6 +4,8 @@ import "./styles.css"
 import Task from "./components/Task"
 import Button from "../Button"
 import ModalNewTask from "./components/ModalNewTask"
+import ModalDeleteTask from "./components/ModalDeleteTask/index."
+import Modal from "../Modal"
 
 type task = {
     title: string;
@@ -87,6 +89,8 @@ export default function TodoList() {
             {
                 showModalNewTask && <ModalNewTask closeModal={handleCloseModalNewTask} />
             }
+
+            {/*      <ModalDeleteTask /> */}
 
         </>
     )

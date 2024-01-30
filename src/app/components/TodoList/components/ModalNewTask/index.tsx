@@ -1,6 +1,7 @@
 import Button from '@/app/components/Button'
 import './style.css'
 import { ChangeEventHandler, FormEventHandler, useState } from 'react';
+import Modal from '@/app/components/Modal';
 
 type Props = {
     closeModal: () => void;
@@ -19,10 +20,10 @@ export default function ModalNewTask({ closeModal }: Props) {
     }
 
     return (
-        <div className='overlay-new-task'>
-            <form onSubmit={handleNewTask} className='modal-new-task'>
-                <h1>Nova Tarefa</h1>
-
+        <Modal
+            title='Nova Tarefa'
+        >
+            <form onSubmit={handleNewTask} className='form-new-task'>
                 <label htmlFor="new-task">
                     Título
                 </label>
@@ -45,6 +46,6 @@ export default function ModalNewTask({ closeModal }: Props) {
                     </Button>
                 </div>
             </form>
-        </div >
+        </Modal>
     )
 }
