@@ -27,6 +27,7 @@ const mocTasks: task[] = [
 export default function TodoList() {
     const [listOfTasks, setListOfTasks] = useState<task[]>(mocTasks)
     const [showModalNewTask, setShowModalNewTask] = useState(false)
+    const [showModalDeleteTask, setShowModalDeleteTask] = useState(false)
 
     const listTasksOpened = listOfTasks.filter((task) => !task.checked)
     const listTasksClosed = listOfTasks.filter((task) => task.checked)
@@ -40,6 +41,9 @@ export default function TodoList() {
     }
     const handleCloseModalNewTask = () => {
         setShowModalNewTask(false)
+    }
+    const handleShowModalDeleteTask = () => {
+        setShowModalDeleteTask(true)
     }
 
     return (
@@ -90,7 +94,9 @@ export default function TodoList() {
                 showModalNewTask && <ModalNewTask closeModal={handleCloseModalNewTask} />
             }
 
-            {/*      <ModalDeleteTask /> */}
+            {
+                <ModalDeleteTask />
+            }
 
         </>
     )

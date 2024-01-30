@@ -43,3 +43,21 @@
 
     color: #000;
 }
+
+.text-delete-new-task {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+    letter-spacing: -0.02rem;
+
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.container-buttons-delete-task {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    gap: 1rem;
+}
