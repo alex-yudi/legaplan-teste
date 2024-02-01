@@ -4,7 +4,6 @@ import "./globals.css";
 
 import Header from "./components/Header";
 
-// TODO: Corrigir a fonte para inter-tight
 const interTight = Inter_Tight({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
