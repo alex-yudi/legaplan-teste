@@ -6,7 +6,7 @@ import { TaskContext } from '@/app/context/TaskContext';
 
 
 export default function ModalNewTask() {
-    const { handlerToggleModalNewTask } = useContext(TaskContext)
+    const { handlerToggleModalNewTask, handleCreateNewTask } = useContext(TaskContext)
 
 
     const [newTask, setNewTask] = useState<string>('');

@@ -2,8 +2,9 @@
 import './styles.css'
 import TrashIcon from '@/assets/trash.svg'
 import Image from 'next/image'
-import { ChangeEventHandler, useState } from 'react'
+import { ChangeEventHandler, useContext, useState } from 'react'
 import ModalDeleteTask from '../ModalDeleteTask/index.'
+import { TaskContext } from '@/app/context/TaskContext'
 
 type task = {
     title: string;
@@ -16,11 +17,7 @@ type Props = {
 }
 
 export default function Task({ value, onChange }: Props) {
-    const [showModalDeleteTask, setShowModalDeleteTask] = useState(false);
-
-    const handleDeleteTask = () => {
-        setShowModalDeleteTask(true)
-    }
+    const { handlerToggleModalDeleteTask, showModalDeleteTask } = useContext(TaskContext)
 
     return (
         <>
@@ -41,7 +38,7 @@ export default function Task({ value, onChange }: Props) {
                     className='icon-delete-task'
                     src={TrashIcon}
                     alt="Excluir task"
-                    onClick={handleDeleteTask}
+                    onClick={handlerToggleModalDeleteTask}
                 />
             </div>
 
