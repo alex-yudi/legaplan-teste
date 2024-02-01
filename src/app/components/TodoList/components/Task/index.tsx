@@ -2,9 +2,10 @@
 import './styles.css'
 import TrashIcon from '@/assets/trash.svg'
 import Image from 'next/image'
-import { ChangeEventHandler, useContext, useState } from 'react'
+import { ChangeEventHandler, useCallback, useContext, useEffect, useState } from 'react'
 import ModalDeleteTask from '../ModalDeleteTask/index.'
 import { TaskContext } from '@/app/context/TaskContext'
+import { title } from 'process'
 
 
 type Props = {
@@ -12,7 +13,7 @@ type Props = {
 }
 
 export default function Task({ value }: Props) {
-    const { handlerToggleModalDeleteTask, showModalDeleteTask, selectTaskToDelete, selectTaskToBeDone } = useContext(TaskContext)
+    const { handlerToggleModalDeleteTask, showModalDeleteTask, selectTaskToDelete, handleChangeCheckOfTask } = useContext(TaskContext)
     const [localValue, setLocalValue] = useState<Task>({ ...value })
 
     const openDeleteModal = () => {
@@ -21,12 +22,11 @@ export default function Task({ value }: Props) {
     }
 
     const handleChangeChecked: ChangeEventHandler<HTMLInputElement> = (e) => {
-        selectTaskToBeDone(value);
-        console.log(e.target.checked)
-        setLocalValue({
-            ...localValue,
+        const newValueOfTask: Task = {
+            ...value,
             checked: e.target.checked,
-        })
+        }
+        handleChangeCheckOfTask(newValueOfTask, value.id);
     }
 
     return (

@@ -11,8 +11,7 @@ type TaskContextType = {
     handleDeleteTask: () => void;
     taskListDone: Task[];
     taskListUndone: Task[];
-    selectTaskToBeDone: (taskSelected: Task) => void;
-    handleChangeTaskToDone: () => void;
+    handleChangeCheckOfTask: (newValue: Task) => void;
 }
 
 type Props = {
@@ -53,7 +52,7 @@ export function TaskProvider({ children }: Props) {
     const [taskListDone, setTaskListDone] = useState<TaskList>([])
     const [taskListUndone, setTaskListUndone] = useState<TaskList>([])
     const [idTaskToDelete, setIdTaskToDelete] = useState<number>()
-    const [taskToBeDone, setTaskToBeDone] = useState<Task>()
+    const [idTaskToBeDone, setIdTaskToBeDone] = useState<number>()
 
     const handlerToggleModalNewTask = () => {
         setShowModalNewTask(!showModalNewTask)
@@ -81,17 +80,16 @@ export function TaskProvider({ children }: Props) {
     }
 
     const handleDeleteTask = () => {
-        const localList = taskList.filter((task) => task.id !== idTaskToDelete)
+        const localList: Task[] = taskList.filter((task) => task.id !== idTaskToDelete)
         setTaskList(localList)
         handlerToggleModalDeleteTask()
     }
 
-    const selectTaskToBeDone = (taskSelected: Task) => {
-        setTaskToBeDone(taskSelected)
-    }
-
-    const handleChangeTaskToDone = () => {
-
+    const handleChangeCheckOfTask = (newValue: Task) => {
+        const indexOfTask = taskList.findIndex((task) => task.id === newValue.id)
+        const localList = [...taskList]
+        localList[indexOfTask] = newValue;
+        setTaskList(localList)
     }
 
     useEffect(() => {
@@ -101,7 +99,7 @@ export function TaskProvider({ children }: Props) {
     }, [taskList])
 
     return (
-        <TaskContext.Provider value={{ showModalNewTask, handlerToggleModalNewTask, handleCreateNewTask, showModalDeleteTask, handlerToggleModalDeleteTask, selectTaskToDelete, handleDeleteTask, taskListDone, taskListUndone, selectTaskToBeDone, handleChangeTaskToDone }}>
+        <TaskContext.Provider value={{ showModalNewTask, handlerToggleModalNewTask, handleCreateNewTask, showModalDeleteTask, handlerToggleModalDeleteTask, selectTaskToDelete, handleDeleteTask, taskListDone, taskListUndone, handleChangeCheckOfTask }}>
             {children}
         </TaskContext.Provider>
     )
