@@ -18,7 +18,7 @@ type Props = {
     children: ReactNode;
 }
 
-let id = 4;
+let id = 5;
 const mocTasks: Task[] = [
     {
         id: 1,
@@ -52,7 +52,6 @@ export function TaskProvider({ children }: Props) {
     const [taskListDone, setTaskListDone] = useState<TaskList>([])
     const [taskListUndone, setTaskListUndone] = useState<TaskList>([])
     const [idTaskToDelete, setIdTaskToDelete] = useState<number>()
-    const [idTaskToBeDone, setIdTaskToBeDone] = useState<number>()
 
     const handlerToggleModalNewTask = () => {
         setShowModalNewTask(!showModalNewTask)

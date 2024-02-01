@@ -28,17 +28,12 @@ export default function TaskList() {
             </span>
             <div className="task-list">
                 {
-                    listOfTaskHaveLength(taskListUndone) ?
-                        localListUndone.map((task) => (
-                            <Task
-                                key={task.title}
-                                value={task}
-                            />
-                        ))
-                        :
-                        <h3 className='msg-empty-list'>
-                            Não há tarefas para hoje
-                        </h3>
+                    localListUndone.map((task) => (
+                        <Task
+                            key={task.title}
+                            value={task}
+                        />
+                    ))
                 }
             </div>
 
@@ -47,17 +42,12 @@ export default function TaskList() {
             </span>
             <div className="task-list tasks-dones">
                 {
-                    listOfTaskHaveLength(taskListUndone) ?
-                        localListDone.map((task) => (
-                            <Task
-                                key={task.title}
-                                value={task}
-                            />
-                        ))
-                        :
-                        <h3 className='msg-empty-list'>
-                            Não há tarefas finalizadas
-                        </h3>
+                    localListDone.map((task) => (
+                        <Task
+                            key={task.title}
+                            value={task}
+                        />
+                    ))
                 }
             </div>
         </div>

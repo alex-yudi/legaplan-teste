@@ -26,7 +26,7 @@ export default function Task({ value }: Props) {
             ...value,
             checked: e.target.checked,
         }
-        handleChangeCheckOfTask(newValueOfTask, value.id);
+        handleChangeCheckOfTask(newValueOfTask);
     }
 
     return (
