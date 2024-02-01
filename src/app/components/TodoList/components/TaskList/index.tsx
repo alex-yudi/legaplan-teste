@@ -22,7 +22,6 @@ export default function TaskList() {
 
     return (
         <div className="container-tasks-list">
-
             <span>
                 Suas tarefas de hoje
             </span>

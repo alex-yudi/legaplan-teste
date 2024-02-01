@@ -8,7 +8,7 @@ import Header from "./components/Header";
 const interTight = Inter_Tight({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Legaplan",
+  title: "FocalPoint",
 };
 
 export default function RootLayout({

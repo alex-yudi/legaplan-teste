@@ -51,3 +51,17 @@
     width: 100%;
     gap: 1rem;
 }
+
+@media (max-width: 460px) {
+    .container-buttons-new-task {
+        flex-direction: column-reverse;
+    }
+
+    .form-new-task>input {
+        width: 95%;
+    }
+
+    .container-buttons-new-task>button {
+        width: 85%;
+    }
+}

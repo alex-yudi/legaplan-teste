@@ -61,3 +61,13 @@
     width: 100%;
     gap: 1rem;
 }
+
+@media (max-width: 460px) {
+    .container-buttons-delete-task {
+        flex-direction: column-reverse;
+    }
+
+    .container-buttons-delete-task>button {
+        width: 85%;
+    }
+}
