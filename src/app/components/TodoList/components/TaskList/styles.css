@@ -22,3 +22,16 @@
     line-height: normal;
     letter-spacing: -0.02rem;
 }
+
+.msg-empty-list {
+    width: 17.125rem;
+
+    color: #000;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.02rem;
+
+    text-align: center;
+}

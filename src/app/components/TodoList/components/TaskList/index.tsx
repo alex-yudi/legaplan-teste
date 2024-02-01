@@ -4,6 +4,15 @@ import './styles.css'
 import Task from '../Task';
 import { TaskContext } from '@/app/context/TaskContext';
 
+const listOfTaskHaveLength = (listOfTasks: Task[]) => {
+    if (listOfTasks.length > 0) {
+        return true
+    }
+
+    return false
+}
+
+
 export default function TaskList() {
     const { taskListDone, taskListUndone } = useContext(TaskContext)
 
@@ -13,18 +22,24 @@ export default function TaskList() {
 
     return (
         <div className="container-tasks-list">
+
             <span>
                 Suas tarefas de hoje
             </span>
             <div className="task-list">
                 {
-                    taskListUndone.map((task) => (
-                        <Task
-                            key={task.title}
-                            value={task}
-                            onChange={handleOnChange}
-                        />
-                    ))
+                    listOfTaskHaveLength(taskListUndone) ?
+                        taskListUndone.map((task) => (
+                            <Task
+                                key={task.title}
+                                value={task}
+                                onChange={handleOnChange}
+                            />
+                        ))
+                        :
+                        <h3 className='msg-empty-list'>
+                            Não há tarefas para hoje
+                        </h3>
                 }
             </div>
 
@@ -33,13 +48,18 @@ export default function TaskList() {
             </span>
             <div className="task-list tasks-dones">
                 {
-                    taskListDone.map((task) => (
-                        <Task
-                            key={task.title}
-                            value={task}
-                            onChange={handleOnChange}
-                        />
-                    ))
+                    listOfTaskHaveLength(taskListUndone) ?
+                        taskListDone.map((task) => (
+                            <Task
+                                key={task.title}
+                                value={task}
+                                onChange={handleOnChange}
+                            />
+                        ))
+                        :
+                        <h3 className='msg-empty-list'>
+                            Não há tarefas finalizadas
+                        </h3>
                 }
             </div>
         </div>
