@@ -11,10 +11,9 @@ export default function ModalNewTask() {
 
     const [newTask, setNewTask] = useState<string>('');
 
-    const handleNewTask: FormEventHandler<HTMLFormElement> = (event) => {
+    const handleSubmitNewTask: FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault()
-        console.log(newTask)
-        handlerToggleModalNewTask()
+        handleCreateNewTask(newTask)
     }
 
     const handleOnChange: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -25,7 +24,7 @@ export default function ModalNewTask() {
         <Modal
             title='Nova Tarefa'
         >
-            <form onSubmit={handleNewTask} className='form-new-task'>
+            <form onSubmit={handleSubmitNewTask} className='form-new-task'>
                 <label htmlFor="new-task">
                     Título
                 </label>

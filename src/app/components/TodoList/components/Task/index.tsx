@@ -2,17 +2,13 @@
 import './styles.css'
 import TrashIcon from '@/assets/trash.svg'
 import Image from 'next/image'
-import { ChangeEventHandler, useContext, useState } from 'react'
+import { ChangeEventHandler, useContext } from 'react'
 import ModalDeleteTask from '../ModalDeleteTask/index.'
 import { TaskContext } from '@/app/context/TaskContext'
 
-type task = {
-    title: string;
-    checked: boolean;
-}
 
 type Props = {
-    value: task;
+    value: Task;
     onChange: ChangeEventHandler<HTMLInputElement>;
 }
 

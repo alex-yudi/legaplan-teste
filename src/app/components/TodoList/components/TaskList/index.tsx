@@ -1,31 +1,11 @@
 'use client'
-import { ChangeEventHandler, useState } from 'react'
+import { ChangeEventHandler, useContext, useState } from 'react'
 import './styles.css'
 import Task from '../Task';
-
-type task = {
-    title: string;
-    checked: boolean;
-}
-
-const mocTasks: task[] = [
-    {
-        title: "Task 1",
-        checked: true
-    },
-    {
-        title: "Task 2",
-        checked: false
-    }
-]
-
+import { TaskContext } from '@/app/context/TaskContext';
 
 export default function TaskList() {
-
-    const [listOfTasks, setListOfTasks] = useState<task[]>(mocTasks)
-
-    const listTasksOpened = listOfTasks.filter((task) => !task.checked)
-    const listTasksClosed = listOfTasks.filter((task) => task.checked)
+    const { taskListDone, taskListUndone } = useContext(TaskContext)
 
     const handleOnChange: ChangeEventHandler<HTMLInputElement> = (e) => {
         console.log(e.target.checked)
@@ -38,7 +18,7 @@ export default function TaskList() {
             </span>
             <div className="task-list">
                 {
-                    listTasksOpened.map((task) => (
+                    taskListUndone.map((task) => (
                         <Task
                             key={task.title}
                             value={task}
@@ -53,7 +33,7 @@ export default function TaskList() {
             </span>
             <div className="task-list tasks-dones">
                 {
-                    listTasksClosed.map((task) => (
+                    taskListDone.map((task) => (
                         <Task
                             key={task.title}
                             value={task}
