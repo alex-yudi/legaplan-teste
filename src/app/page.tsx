@@ -1,12 +1,5 @@
-import TodoList from "./components/TodoList";
-import { TaskProvider } from "./context/TaskContext";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return (
-    <TaskProvider>
-      <main>
-        <TodoList />
-      </main>
-    </TaskProvider>
-  );
+  redirect('/todo-list')
 }
