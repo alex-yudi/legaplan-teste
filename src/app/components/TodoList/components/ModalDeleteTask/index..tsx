@@ -4,8 +4,16 @@ import Button from '@/app/components/Button'
 import { useContext } from 'react'
 import { TaskContext } from '@/app/context/TaskContext'
 
+type Props = {
+    taskSelected: Task;
+}
+
 export default function ModalDeleteTask() {
     const { handlerToggleModalDeleteTask, handleDeleteTask } = useContext(TaskContext)
+
+    const deleteTask = () => {
+        handleDeleteTask()
+    }
 
     return (
         <Modal
@@ -26,7 +34,7 @@ export default function ModalDeleteTask() {
                 <Button
                     color='red'
                     quantity='double'
-                    onClick={handleDeleteTask}
+                    onClick={deleteTask}
                 >
                     Deletar
                 </Button>

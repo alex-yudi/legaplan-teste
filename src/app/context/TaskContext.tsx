@@ -7,7 +7,8 @@ type TaskContextType = {
     handleCreateNewTask: (newTask: string) => void;
     showModalDeleteTask: boolean;
     handlerToggleModalDeleteTask: () => void;
-    handleDeleteTask: (taskToDelete: Task) => void;
+    selectTaskToDelete: (taskSelected: Task) => void;
+    handleDeleteTask: () => void;
     taskListDone: Task[];
     taskListUndone: Task[];
 }
@@ -37,6 +38,7 @@ export function TaskProvider({ children }: Props) {
     const [taskList, setTaskList] = useState<TaskList>(mocTasks)
     const [taskListDone, setTaskListDone] = useState<TaskList>([])
     const [taskListUndone, setTaskListUndone] = useState<TaskList>([])
+    const [taskToDelete, setTaskToDelete] = useState<Task>()
 
 
     const handlerToggleModalNewTask = () => {
@@ -56,8 +58,14 @@ export function TaskProvider({ children }: Props) {
         handlerToggleModalNewTask()
     }
 
-    const handleDeleteTask = (taskToDelete: Task) => {
-        const localList = taskList.filter((task) => task !== taskToDelete)
+    const selectTaskToDelete = (taskSelected: Task) => {
+        setTaskToDelete(taskSelected)
+
+        console.log(taskToDelete)
+    }
+
+    const handleDeleteTask = () => {
+        const localList = taskList.filter((task) => task.title !== taskToDelete!.title)
         setTaskList(localList)
         handlerToggleModalDeleteTask()
     }
@@ -71,7 +79,7 @@ export function TaskProvider({ children }: Props) {
     }, [taskList])
 
     return (
-        <TaskContext.Provider value={{ showModalNewTask, handlerToggleModalNewTask, handleCreateNewTask, showModalDeleteTask, handlerToggleModalDeleteTask, handleDeleteTask, taskListDone, taskListUndone }}>
+        <TaskContext.Provider value={{ showModalNewTask, handlerToggleModalNewTask, handleCreateNewTask, showModalDeleteTask, handlerToggleModalDeleteTask, selectTaskToDelete, handleDeleteTask, taskListDone, taskListUndone }}>
             {children}
         </TaskContext.Provider>
     )

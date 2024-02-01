@@ -13,7 +13,12 @@ type Props = {
 }
 
 export default function Task({ value, onChange }: Props) {
-    const { handlerToggleModalDeleteTask, showModalDeleteTask } = useContext(TaskContext)
+    const { handlerToggleModalDeleteTask, showModalDeleteTask, selectTaskToDelete } = useContext(TaskContext)
+
+    const openDeleteModal = () => {
+        selectTaskToDelete(value)
+        handlerToggleModalDeleteTask()
+    }
 
     return (
         <>
@@ -34,7 +39,7 @@ export default function Task({ value, onChange }: Props) {
                     className='icon-delete-task'
                     src={TrashIcon}
                     alt="Excluir task"
-                    onClick={handlerToggleModalDeleteTask}
+                    onClick={openDeleteModal}
                 />
             </div>
 
