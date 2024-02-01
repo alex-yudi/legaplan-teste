@@ -1,18 +1,20 @@
 import Button from '@/app/components/Button'
 import './style.css'
-import { ChangeEventHandler, FormEventHandler, useState } from 'react';
+import { ChangeEventHandler, FormEventHandler, useContext, useState } from 'react';
 import Modal from '@/app/components/Modal';
+import { TaskContext } from '@/app/context/TaskContext';
 
-type Props = {
-    closeModal: () => void;
-}
 
-export default function ModalNewTask({ closeModal }: Props) {
+export default function ModalNewTask() {
+    const { handlerToggleModalNewTask } = useContext(TaskContext)
+
+
     const [newTask, setNewTask] = useState<string>('');
 
     const handleNewTask: FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault()
-        closeModal()
+        console.log(newTask)
+        handlerToggleModalNewTask()
     }
 
     const handleOnChange: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -32,7 +34,7 @@ export default function ModalNewTask({ closeModal }: Props) {
                 <div className='container-buttons-new-task'>
                     <Button
                         color='gray'
-                        onClick={closeModal}
+                        onClick={handlerToggleModalNewTask}
                         quantity='double'
                     >
                         Cancelar

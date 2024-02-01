@@ -2,7 +2,9 @@
 import { ReactNode, createContext, useState } from "react"
 
 type TaskContextType = {
-    teste: string;
+    showModalNewTask: boolean;
+    handlerToggleModalNewTask: () => void;
+
 }
 
 type Props = {
@@ -12,10 +14,15 @@ type Props = {
 export const TaskContext = createContext({} as TaskContextType)
 
 export function TaskProvider({ children }: Props) {
-    const [teste, setTeste] = useState<string>('');
+    const [showModalNewTask, setShowModalNewTask] = useState(false);
+
+    const handlerToggleModalNewTask = () => {
+        setShowModalNewTask(!showModalNewTask)
+    }
+
 
     return (
-        <TaskContext.Provider value={{ teste, }}>
+        <TaskContext.Provider value={{ showModalNewTask, handlerToggleModalNewTask }}>
             {children}
         </TaskContext.Provider>
     )

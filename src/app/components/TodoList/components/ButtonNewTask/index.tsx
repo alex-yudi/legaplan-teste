@@ -1,25 +1,24 @@
 'use client'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import Button from '@/app/components/Button';
 import ModalNewTask from '../ModalNewTask';
+import { TaskContext } from '@/app/context/TaskContext';
 
 export default function ButtonNewTask() {
-    const [showModalNewTask, setShowModalNewTask] = useState(false);
+    const { showModalNewTask, handlerToggleModalNewTask } = useContext(TaskContext)
 
 
     return (
         <>
             <Button
                 color="blue"
-                onClick={() => { }}
+                onClick={handlerToggleModalNewTask}
                 quantity="unique"
             >
                 Adicionar nova tarefa
             </Button>
             {
-
-                showModalNewTask && <ModalNewTask closeModal={() => { }} />
-
+                showModalNewTask && <ModalNewTask />
             }
         </>
     )
