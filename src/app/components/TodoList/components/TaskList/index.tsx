@@ -16,9 +16,9 @@ const listOfTaskHaveLength = (listOfTasks: Task[]) => {
 export default function TaskList() {
     const { taskListDone, taskListUndone } = useContext(TaskContext)
 
-    const handleOnChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-        console.log(e.target.checked)
-    }
+    const localListDone = [...taskListDone]
+    const localListUndone = [...taskListUndone]
+
 
     return (
         <div className="container-tasks-list">
@@ -29,11 +29,10 @@ export default function TaskList() {
             <div className="task-list">
                 {
                     listOfTaskHaveLength(taskListUndone) ?
-                        taskListUndone.map((task) => (
+                        localListUndone.map((task) => (
                             <Task
                                 key={task.title}
                                 value={task}
-                                onChange={handleOnChange}
                             />
                         ))
                         :
@@ -49,11 +48,10 @@ export default function TaskList() {
             <div className="task-list tasks-dones">
                 {
                     listOfTaskHaveLength(taskListUndone) ?
-                        taskListDone.map((task) => (
+                        localListDone.map((task) => (
                             <Task
                                 key={task.title}
                                 value={task}
-                                onChange={handleOnChange}
                             />
                         ))
                         :

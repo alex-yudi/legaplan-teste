@@ -4,10 +4,6 @@ import Button from '@/app/components/Button'
 import { useContext } from 'react'
 import { TaskContext } from '@/app/context/TaskContext'
 
-type Props = {
-    taskSelected: Task;
-}
-
 export default function ModalDeleteTask() {
     const { handlerToggleModalDeleteTask, handleDeleteTask } = useContext(TaskContext)
 

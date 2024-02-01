@@ -13,6 +13,9 @@ export default function ModalNewTask() {
 
     const handleSubmitNewTask: FormEventHandler<HTMLFormElement> = (event) => {
         event.preventDefault()
+        if (newTask.trim() === '') {
+            return
+        }
         handleCreateNewTask(newTask)
     }
 

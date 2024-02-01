@@ -7,26 +7,40 @@ type TaskContextType = {
     handleCreateNewTask: (newTask: string) => void;
     showModalDeleteTask: boolean;
     handlerToggleModalDeleteTask: () => void;
-    selectTaskToDelete: (taskSelected: Task) => void;
+    selectTaskToDelete: (idTaskSelected: number) => void;
     handleDeleteTask: () => void;
     taskListDone: Task[];
     taskListUndone: Task[];
+    selectTaskToBeDone: (taskSelected: Task) => void;
+    handleChangeTaskToDone: () => void;
 }
 
 type Props = {
     children: ReactNode;
 }
 
-
+let id = 4;
 const mocTasks: Task[] = [
     {
-        title: "Task 1",
+        id: 1,
+        title: "Levar o lixo para fora",
         checked: true
     },
     {
-        title: "Task 2",
+        id: 2,
+        title: "Lavar as mãos",
         checked: false
-    }
+    },
+    {
+        id: 3,
+        title: "Fazer um bolo",
+        checked: false
+    },
+    {
+        id: 4,
+        title: "Lavar a louça",
+        checked: false
+    },
 ]
 
 
@@ -38,8 +52,8 @@ export function TaskProvider({ children }: Props) {
     const [taskList, setTaskList] = useState<TaskList>(mocTasks)
     const [taskListDone, setTaskListDone] = useState<TaskList>([])
     const [taskListUndone, setTaskListUndone] = useState<TaskList>([])
-    const [taskToDelete, setTaskToDelete] = useState<Task>()
-
+    const [idTaskToDelete, setIdTaskToDelete] = useState<number>()
+    const [taskToBeDone, setTaskToBeDone] = useState<Task>()
 
     const handlerToggleModalNewTask = () => {
         setShowModalNewTask(!showModalNewTask)
@@ -50,36 +64,44 @@ export function TaskProvider({ children }: Props) {
 
     const handleCreateNewTask = (newTask: string) => {
         const task: Task = {
+            id,
             title: newTask,
             checked: false,
         }
         const localList = [...taskList, task]
-        setTaskList(localList);
+        setTaskList(localList)
+
+        id++
+
         handlerToggleModalNewTask()
     }
 
-    const selectTaskToDelete = (taskSelected: Task) => {
-        setTaskToDelete(taskSelected)
-
-        console.log(taskToDelete)
+    const selectTaskToDelete = (idTaskSelected: number) => {
+        setIdTaskToDelete(idTaskSelected)
     }
 
     const handleDeleteTask = () => {
-        const localList = taskList.filter((task) => task.title !== taskToDelete!.title)
+        const localList = taskList.filter((task) => task.id !== idTaskToDelete)
         setTaskList(localList)
         handlerToggleModalDeleteTask()
     }
 
+    const selectTaskToBeDone = (taskSelected: Task) => {
+        setTaskToBeDone(taskSelected)
+    }
+
+    const handleChangeTaskToDone = () => {
+
+    }
 
     useEffect(() => {
-        const localTaskList = [...taskList]
-
-        setTaskListDone(localTaskList.filter((task) => task.checked === true))
+        const localTaskList = taskList
         setTaskListUndone(localTaskList.filter((task) => task.checked === false))
+        setTaskListDone(localTaskList.filter((task) => task.checked === true))
     }, [taskList])
 
     return (
-        <TaskContext.Provider value={{ showModalNewTask, handlerToggleModalNewTask, handleCreateNewTask, showModalDeleteTask, handlerToggleModalDeleteTask, selectTaskToDelete, handleDeleteTask, taskListDone, taskListUndone }}>
+        <TaskContext.Provider value={{ showModalNewTask, handlerToggleModalNewTask, handleCreateNewTask, showModalDeleteTask, handlerToggleModalDeleteTask, selectTaskToDelete, handleDeleteTask, taskListDone, taskListUndone, selectTaskToBeDone, handleChangeTaskToDone }}>
             {children}
         </TaskContext.Provider>
     )
