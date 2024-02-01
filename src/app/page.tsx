@@ -1,9 +1,12 @@
 import TodoList from "./components/TodoList";
+import { TaskProvider } from "./context/TaskContext";
 
 export default function Home() {
   return (
-    <main>
-      <TodoList />
-    </main>
+    <TaskProvider>
+      <main>
+        <TodoList />
+      </main>
+    </TaskProvider>
   );
 }

@@ -1,3 +1,4 @@
+'use client'
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 import './styles.css'
 

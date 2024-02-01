@@ -9,8 +9,6 @@
     justify-content: center;
     align-items: center;
 
-
-    background: rgba(255, 255, 255, 0.80);
     backdrop-filter: blur(2px);
 }
 
